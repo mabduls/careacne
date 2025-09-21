@@ -57,34 +57,70 @@ This project consists of:
 ## 📂 Project Structure
 
 ```
-├── dist/                        # Production build output
-├── node_modules/                # Dependencies
+CAREACNE-PROJECT-CAPSTONE/
+├── acure-scan-workers/          # Cloudflare Workers project
+│   ├── .wrangler/
+│   │   └── tmp/                 # Temporary build files
+│   ├── package.json             # Worker dependencies
+│   ├── worker-auth.js           # Authentication worker
+│   ├── worker.js                # Main worker entry point
+│   └── wrangler.toml            # Cloudflare Workers config
 ├── src/
-│   ├── public/                  # Public assets
-│   │   ├── images/              # Images
-│   │   └── favicon.png          # App favicon
+│   ├── models/
+│   │   └── tfjs/
+│   │       └── model.json       # TensorFlow.js model
+│   ├── public/
+│   │   └── images/
+│   │       ├── artikel/         # Article images
+│   │       └── icon/            # App icons
 │   ├── scripts/
-│   │   ├── data/                # Data handlers (API, DB)
-│   │   ├── pages/               # Page components (auth, landing, etc.)
-│   │   ├── routes/              # Routing (hash-based)
-│   │   ├── utils/               # Utility functions
-│   │   ├── index.js             # Entry point
+│   │   ├── data/
+│   │   │   ├── api.js           # API handlers
+│   │   │   └── database.js      # Database operations
+│   │   ├── pages/
+│   │   │   ├── article/
+│   │   │   │   ├── detail/
+│   │   │   │   │   ├── article-detail-page.js
+│   │   │   │   │   ├── article-detail-presenter.js
+│   │   │   │   │   └── article-detail-page-template.html
+│   │   │   │   ├── article-page.js
+│   │   │   │   ├── article-presenter.js
+│   │   │   │   └── article-page-template.html
+│   │   │   └── app.js           # Main app component
+│   │   ├── routes/
+│   │   │   ├── routes.js        # Route definitions
+│   │   │   └── url-parser.js    # URL parsing utilities
+│   │   ├── services/
+│   │   │   ├── ml-service.js    # Machine learning service
+│   │   │   └── scan-service.js  # Scan processing service
+│   │   ├── utils/
+│   │   │   └── auth.js          # Authentication utilities
+│   │   ├── index.js             # Frontend entry point
 │   │   └── sw.js                # Service Worker
 │   ├── server/
+│   │   ├── config/
+│   │   │   ├── firebase.js     # Firebase configuration
+│   │   │   └── hapi.js         # Hapi server config
+│   │   ├── controllers/
+│   │   │   └── auth-controller.js  # Authentication controller
+│   │   ├── routes/
+│   │   │   └── auth-routes.js  # Authentication routes
+│   │   ├── services/
+│   │   │   └── auth-services.js    # Authentication services
+│   │   ├── utils/
+│   │   │   └── response.js     # Response utilities
 │   │   └── index.js             # Backend server entry (Hapi)
-│   ├── styles/                  # Global styles
-│   │   └── styles.css
+│   ├── styles/
+│   │   └── styles.css           # Global styles
 │   └── index.html               # Main HTML entry
-├── acure-scan-workers/          # Cloudflare Workers project
-│   ├── worker.js                # Worker entry point
-│   └── package.json             # Worker dependencies
-├── .gitignore
+├── .prettierrc                  # Prettier configuration
 ├── package.json                 # Root dependencies & scripts
-├── wrangler.toml                # Cloudflare Workers config
-├── webpack.common.js
-├── webpack.dev.js
-├── webpack.prod.js
-└── tailwind.config.js
+├── postcss.config.js            # PostCSS configuration
+├── README.md                    # Project documentation
+├── tailwind.config.js           # Tailwind CSS configuration
+├── webpack.common.js            # Common webpack config
+├── webpack.dev.js               # Development webpack config
+└── webpack.prod.js              # Production webpack config
 ```
 
 ---
