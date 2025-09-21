@@ -1,0 +1,488 @@
+<style>
+    /* Keyframe animations */
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInLeft {
+        from {
+            opacity: 0;
+            transform: translateX(-30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInRight {
+        from {
+            opacity: 0;
+            transform: translateX(30px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    @keyframes fadeInScale {
+        from {
+            opacity: 0;
+            transform: scale(0.9);
+        }
+
+        to {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes slideInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes bounceIn {
+        0% {
+            opacity: 0;
+            transform: scale(0.3);
+        }
+
+        50% {
+            opacity: 1;
+            transform: scale(1.05);
+        }
+
+        70% {
+            transform: scale(0.9);
+        }
+
+        100% {
+            opacity: 1;
+            transform: scale(1);
+        }
+    }
+
+    @keyframes progressBar {
+        from {
+            width: 0%;
+        }
+
+        to {
+            width: var(--progress-width);
+        }
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            opacity: 1;
+        }
+
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    @keyframes shimmer {
+        0% {
+            background-position: -468px 0;
+        }
+
+        100% {
+            background-position: 468px 0;
+        }
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-6px);
+        }
+    }
+
+    @keyframes glow {
+
+        0%,
+        100% {
+            box-shadow: 0 0 5px rgba(59, 130, 246, 0.5);
+        }
+
+        50% {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.8), 0 0 30px rgba(59, 130, 246, 0.6);
+        }
+    }
+
+    /* Animation classes */
+    .animate-fade-in-up {
+        animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .animate-fade-in-left {
+        animation: fadeInLeft 0.6s ease-out forwards;
+    }
+
+    .animate-fade-in-right {
+        animation: fadeInRight 0.6s ease-out forwards;
+    }
+
+    .animate-fade-in-scale {
+        animation: fadeInScale 0.5s ease-out forwards;
+    }
+
+    .animate-slide-in-down {
+        animation: slideInDown 0.5s ease-out forwards;
+    }
+
+    .animate-bounce-in {
+        animation: bounceIn 0.7s ease-out forwards;
+    }
+
+    .animate-progress {
+        animation: progressBar 1.5s ease-out forwards;
+    }
+
+    .animate-float {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    .animate-glow {
+        animation: glow 2s ease-in-out infinite;
+    }
+
+    .animate-delayed-1 {
+        animation-delay: 0.1s;
+    }
+
+    .animate-delayed-2 {
+        animation-delay: 0.2s;
+    }
+
+    .animate-delayed-3 {
+        animation-delay: 0.3s;
+    }
+
+    .animate-delayed-4 {
+        animation-delay: 0.4s;
+    }
+
+    .animate-delayed-5 {
+        animation-delay: 0.5s;
+    }
+
+    /* Hover effects */
+    .hover-lift {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .hover-lift:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .hover-scale {
+        transition: transform 0.2s ease-in-out;
+    }
+
+    .hover-scale:hover {
+        transform: scale(1.02);
+    }
+
+    .hover-glow {
+        transition: all 0.3s ease-in-out;
+    }
+
+    .hover-glow:hover {
+        box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+    }
+
+    /* Shimmer effect */
+    .shimmer {
+        background: linear-gradient(to right, #f6f7f8 0%, #edeef1 20%, #f6f7f8 40%, #f6f7f8 100%);
+        background-size: 800px 104px;
+        animation: shimmer 1.5s linear infinite;
+    }
+
+    /* Progress bar animation */
+    .progress-bar {
+        transition: all 0.3s ease-in-out;
+        animation: progressBar 1.5s ease-out;
+    }
+
+    /* Initial hidden state for animations */
+    .animate-on-load {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    /* Image hover effects */
+    .image-container {
+        overflow: hidden;
+        position: relative;
+    }
+
+    .image-container img {
+        transition: transform 0.4s ease-in-out;
+    }
+
+    .image-container:hover img {
+        transform: scale(1.05);
+    }
+
+    .image-overlay {
+        transition: all 0.3s ease-in-out;
+    }
+
+    .image-container:hover .image-overlay {
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+    /* Card animations */
+    .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-hover:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 20px 25px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.04);
+    }
+
+    /* Button animations */
+    .btn-animate {
+        position: relative;
+        overflow: hidden;
+        transition: all 0.3s ease-in-out;
+    }
+
+    .btn-animate::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+    }
+
+    .btn-animate:hover::before {
+        left: 100%;
+    }
+
+    /* Loading animation improvements */
+    .loading-pulse {
+        animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+
+    /* Stagger animation for list items */
+    .stagger-item {
+        opacity: 0;
+        transform: translateX(-20px);
+        animation: fadeInRight 0.5s ease-out forwards;
+    }
+
+    .stagger-item:nth-child(1) {
+        animation-delay: 0.1s;
+    }
+
+    .stagger-item:nth-child(2) {
+        animation-delay: 0.2s;
+    }
+
+    .stagger-item:nth-child(3) {
+        animation-delay: 0.3s;
+    }
+
+    .stagger-item:nth-child(4) {
+        animation-delay: 0.4s;
+    }
+
+    .stagger-item:nth-child(5) {
+        animation-delay: 0.5s;
+    }
+
+    /* Particle effect for confidence bars */
+    .confidence-bar {
+        position: relative;
+        overflow: hidden;
+    }
+
+    .confidence-bar::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        animation: shimmer 2s linear infinite;
+    }
+</style>
+
+<div class="min-h-screen bg-gradient-to-b from-[#E5FFFB] to-white flex flex-col">
+    <!-- Header -->
+    <header class="bg-[#00667A] text-white py-4 px-6 flex justify-between items-center animate-slide-in-down">
+        <div class="flex items-center space-x-2 animate-fade-in-left">
+            <svg class="w-7 h-7 text-white animate-float" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+                    2 6 4 4 6.5 4c1.74 0 3.41 1.04 4.13 2.56h1.74
+                    C14.09 5.04 15.76 4 17.5 4 20 4 22 6 22 8.5
+                    c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+            <span class="text-xl font-bold">AcureScan</span>
+        </div>
+        <button id="backButton"
+            class="flex items-center space-x-2 hover:bg-cyan-700 px-3 py-2 rounded transition-all duration-300 btn-animate animate-fade-in-right hover-scale">
+            <svg class="w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span>Back</span>
+        </button>
+    </header>
+
+    <main class="flex-grow px-6 py-8">
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="flex justify-center items-center py-12">
+            <div class="relative">
+                <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-teal-600"></div>
+                <div class="absolute inset-0 rounded-full border-2 border-teal-200 animate-ping"></div>
+            </div>
+            <span class="ml-4 text-teal-600 font-medium loading-pulse">Loading scan details...</span>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="hidden bg-red-50 border-l-4 border-red-500 p-4 mb-6 rounded animate-fade-in-up">
+            <div class="flex items-center">
+                <svg class="w-5 h-5 text-red-500 mr-3 animate-bounce" fill="none" stroke="currentColor"
+                    viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                </svg>
+                <p class="text-red-700 font-medium">Failed to load scan details. Please try again.</p>
+            </div>
+            <button id="retryButton"
+                class="mt-2 text-sm text-red-600 hover:text-red-800 transition-colors duration-200 hover:underline">Retry</button>
+        </div>
+
+        <!-- Main Content Container -->
+        <div id="resultDetailContent"
+            class="hidden bg-white rounded-xl shadow-lg p-6 max-w-5xl mx-auto animate-on-load hover-lift">
+            <!-- Title and Timestamp -->
+            <div class="flex justify-between items-start mb-6 animate-fade-in-up">
+                <h1 class="text-3xl font-bold text-teal-700 animate-fade-in-left">Scan Details</h1>
+                <p id="scanTimestamp" class="text-sm text-gray-500 animate-fade-in-right animate-delayed-1"></p>
+            </div>
+
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Image Preview -->
+                <div class="space-y-4 animate-fade-in-left animate-delayed-2">
+                    <h2 class="text-xl font-semibold text-gray-800">Scanned Image</h2>
+                    <div class="relative image-container rounded-lg overflow-hidden hover-glow card-hover">
+                        <img id="resultImage"
+                            class="w-full rounded-lg border border-gray-200 shadow-sm transition-transform duration-500"
+                            alt="Scanned image for acne detection" />
+                        <div
+                            class="absolute top-2 right-2 bg-black bg-opacity-50 text-white px-2 py-1 rounded text-xs image-overlay animate-bounce-in animate-delayed-3">
+                            AI Analyzed
+                        </div>
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Results -->
+                <div class="space-y-6 animate-fade-in-right animate-delayed-3">
+                    <div>
+                        <h2 class="text-xl font-semibold text-gray-800 mb-4">Detection Results</h2>
+                        <div id="resultsContainer" class="space-y-3 bg-gray-50 p-4 rounded-lg card-hover">
+                            <!-- Results will be populated by JavaScript -->
+                        </div>
+                    </div>
+
+                    <!-- Dominant Result -->
+                    <div
+                        class="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg border border-blue-200 hover-lift animate-glow">
+                        <h3
+                            class="font-semibold text-blue-800 mb-2 flex items-center animate-fade-in-up animate-delayed-4">
+                            <svg class="w-5 h-5 mr-2 animate-bounce" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Most Likely Diagnosis:
+                        </h3>
+                        <div id="dominantResult" class="flex items-center animate-bounce-in animate-delayed-5">
+                            <!-- Will be populated by JavaScript -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Recommendations Section -->
+            <div class="mt-10 pt-8 border-t border-gray-200 animate-fade-in-up animate-delayed-4">
+                <h2 class="text-2xl font-semibold text-gray-800 mb-6 flex items-center">
+                    <svg class="w-6 h-6 mr-3 text-teal-600 animate-float" fill="none" stroke="currentColor"
+                        viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                    </svg>
+                    Treatment Recommendations
+                </h2>
+                <div id="recommendation" class="max-w-none">
+                    <!-- Recommendations will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Disclaimer -->
+            <div
+                class="mt-8 p-4 bg-amber-50 border border-amber-200 rounded-lg card-hover animate-fade-in-up animate-delayed-5">
+                <div class="flex items-start">
+                    <svg class="w-5 h-5 text-amber-600 mt-0.5 mr-3 flex-shrink-0 animate-pulse" fill="none"
+                        stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
+                    </svg>
+                    <div>
+                        <h4 class="font-medium text-amber-800">Medical Disclaimer</h4>
+                        <p class="text-sm text-amber-700 mt-1">
+                            This AI analysis is for informational purposes only and should not replace professional
+                            medical advice.
+                            Please consult with a qualified dermatologist or healthcare provider for proper diagnosis
+                            and treatment.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="text-center text-gray-500 text-sm py-4 animate-fade-in-up animate-delayed-5">
+        © 2025 AcureScan. SkinCheck. All rights reserved.
+    </footer>
+</div>

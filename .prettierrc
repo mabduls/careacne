@@ -1,0 +1,21 @@
+{
+    "semi": false,
+    "singleQuote": true,
+    "printWidth": 100,
+    "tabWidth": 4,
+    "useTabs": false,
+    "trailingComma": "none",
+    "bracketSpacing": true,
+    "arrowParens": "avoid",
+    "htmlWhitespaceSensitivity": "css",
+    "plugins": ["prettier-plugin-jsdoc", "prettier-plugin-tailwindcss", "@prettier/plugin-xml"],
+    "overrides": [
+        {
+            "files": ["*.js"],
+            "options": {
+                "parser": "babel",
+                "embeddedLanguageFormatting": "auto"
+            }
+        }
+    ]
+}

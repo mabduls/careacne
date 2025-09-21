@@ -1,0 +1,345 @@
+<style>
+    /* Enhanced animations and transitions */
+    .scan-card {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        opacity: 0;
+        transform: translateY(20px);
+        animation: slideInUp 0.6s ease-out forwards;
+    }
+
+    .scan-card:nth-child(2) {
+        animation-delay: 0.1s;
+    }
+
+    .scan-card:nth-child(3) {
+        animation-delay: 0.2s;
+    }
+
+    .scan-card:nth-child(4) {
+        animation-delay: 0.3s;
+    }
+
+    .scan-card:nth-child(5) {
+        animation-delay: 0.4s;
+    }
+
+    .scan-card:nth-child(6) {
+        animation-delay: 0.5s;
+    }
+
+    .scan-card:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 103, 122, 0.15);
+    }
+
+    .scan-card img {
+        transition: all 0.3s ease;
+    }
+
+    .scan-card:hover img {
+        transform: scale(1.05);
+    }
+
+    @keyframes slideInUp {
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeInDown {
+        from {
+            opacity: 0;
+            transform: translateY(-20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+
+        to {
+            opacity: 1;
+        }
+    }
+
+    @keyframes pulse {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.05);
+        }
+    }
+
+    @keyframes shimmer {
+        0% {
+            background-position: -200px 0;
+        }
+
+        100% {
+            background-position: calc(200px + 100%) 0;
+        }
+    }
+
+    .empty-state {
+        background: linear-gradient(135deg, #f0fdfa 0%, #e0f2fe 100%);
+        animation: fadeIn 0.8s ease-out;
+    }
+
+    .empty-state svg {
+        animation: pulse 2s infinite;
+    }
+
+    .loading-shimmer {
+        background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+        background-size: 200px 100%;
+        animation: shimmer 1.5s infinite;
+    }
+
+    .filter-controls {
+        animation: fadeInDown 0.6s ease-out;
+    }
+
+    .title-section {
+        animation: fadeInDown 0.5s ease-out;
+    }
+
+    .header-nav {
+        transition: all 0.3s ease;
+    }
+
+    .header-nav:hover {
+        transform: scale(1.05);
+    }
+
+    .btn-primary {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .btn-primary:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+        transition: left 0.5s;
+    }
+
+    .btn-primary:hover:before {
+        left: 100%;
+    }
+
+    .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 25px rgba(0, 103, 122, 0.3);
+    }
+
+    .pagination-btn {
+        transition: all 0.3s ease;
+    }
+
+    .pagination-btn:hover:not(:disabled) {
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .pagination-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    .select-wrapper {
+        transition: all 0.3s ease;
+    }
+
+    .select-wrapper:hover {
+        transform: translateY(-1px);
+    }
+
+    .select-wrapper select:focus {
+        transform: scale(1.02);
+    }
+
+    .confidence-badge {
+        transition: all 0.3s ease;
+        animation: fadeIn 0.5s ease-out;
+    }
+
+    .recommendation-tag {
+        transition: all 0.2s ease;
+        animation: fadeIn 0.7s ease-out;
+    }
+
+    .recommendation-tag:hover {
+        transform: scale(1.05);
+    }
+
+    .grid-container {
+        animation: fadeIn 1s ease-out;
+    }
+
+    /* Loading spinner enhancement */
+    .loading-spinner {
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    /* Stagger animation for filter controls */
+    .filter-controls>div:first-child {
+        animation-delay: 0.1s;
+    }
+
+    .filter-controls>div:last-child {
+        animation-delay: 0.2s;
+    }
+
+    /* Hover effects for interactive elements */
+    .interactive-hover {
+        transition: all 0.2s ease;
+    }
+
+    .interactive-hover:hover {
+        transform: scale(1.02);
+    }
+
+    /* Date badge animation */
+    .date-badge {
+        transition: all 0.3s ease;
+        backdrop-filter: blur(8px);
+    }
+
+    .scan-card:hover .date-badge {
+        background: rgba(0, 0, 0, 0.7);
+    }
+</style>
+
+<div class="min-h-screen bg-gradient-to-b from-[#E5FFFB] to-white flex flex-col">
+    <!-- Header -->
+    <header class="bg-[#00667A] text-white py-4 px-6 flex justify-between items-center">
+        <div class="flex items-center space-x-2 header-nav">
+            <svg class="w-7 h-7 text-white" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 
+                    2 6 4 4 6.5 4c1.74 0 3.41 1.04 4.13 2.56h1.74
+                    C14.09 5.04 15.76 4 17.5 4 20 4 22 6 22 8.5
+                    c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+            </svg>
+            <span class="text-xl font-bold">AcureScan</span>
+        </div>
+        <button id="backButton"
+            class="flex items-center space-x-2 hover:bg-cyan-700 px-3 py-2 rounded transition-all duration-300 header-nav">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+            </svg>
+            <span>Back</span>
+        </button>
+    </header>
+
+    <main class="flex-grow px-6 py-8">
+        <div class="max-w-6xl mx-auto">
+            <!-- Title Section -->
+            <div class="mb-8 title-section">
+                <h1 class="text-3xl font-bold text-teal-700 mb-2">Your Scan History</h1>
+                <p class="text-gray-600">Review your previous acne scan results</p>
+            </div>
+
+            <!-- Filter Controls -->
+            <div class="flex flex-wrap gap-4 mb-6 filter-controls">
+                <div class="relative flex-1 min-w-[200px] select-wrapper">
+                    <select id="filterType"
+                        class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 w-full focus:outline-none focus:ring-2 focus:ring-teal-300 focus:border-teal-500 transition-all duration-300">
+                        <option value="all">All Acne Types</option>
+                        <option value="blackheads">Blackheads</option>
+                        <option value="cyst">Cyst</option>
+                        <option value="papules">Papules</option>
+                        <option value="pustules">Pustules</option>
+                        <option value="whiteheads">Whiteheads</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+
+                <div class="relative flex-1 min-w-[200px] select-wrapper">
+                    <select id="sortBy"
+                        class="appearance-none bg-white border border-gray-300 rounded-lg px-4 py-2 pr-8 w-full focus:outline-none focus:ring-2 focus:ring-teal-300 focus:border-teal-500 transition-all duration-300">
+                        <option value="newest">Newest First</option>
+                        <option value="oldest">Oldest First</option>
+                        <option value="confidence">Highest Confidence</option>
+                    </select>
+                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loadingIndicator" class="text-center py-12">
+                <div class="inline-block loading-spinner rounded-full h-10 w-10 border-t-2 border-b-2 border-teal-600">
+                </div>
+                <p class="mt-4 text-gray-600">Loading your scan history...</p>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden empty-state rounded-xl p-8 text-center">
+                <h3 class="text-xl font-semibold text-gray-700 mb-2">No Scan History Yet</h3>
+                <p class="text-gray-600 mb-6">You haven't performed any scans yet. Start by uploading an image or using
+                    your camera.</p>
+                <button id="startScanButton"
+                    class="btn-primary bg-teal-600 text-white px-6 py-2 rounded-lg hover:bg-teal-700">
+                    Start Scanning
+                </button>
+            </div>
+
+            <!-- Scan Results Grid -->
+            <div id="scanResultsGrid"
+                class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 hidden grid-container">
+                <!-- Scan cards will be inserted here by JavaScript -->
+            </div>
+
+            <!-- Pagination Controls -->
+            <div id="paginationControls" class="mt-8 flex justify-center items-center gap-4 hidden">
+                <button id="prevPageButton"
+                    class="pagination-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 disabled:opacity-50">
+                    Previous
+                </button>
+                <span id="pageInfo" class="text-gray-600">Page 1 of 1</span>
+                <button id="nextPageButton"
+                    class="pagination-btn px-4 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 disabled:opacity-50">
+                    Next
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-gray-500 text-sm py-4">
+        © 2025 AcureScan. SkinCheck. All rights reserved.
+    </footer>
+</div>

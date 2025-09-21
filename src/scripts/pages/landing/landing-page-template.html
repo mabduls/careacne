@@ -1,0 +1,586 @@
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+    * {
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .gradient-bg {
+        background: linear-gradient(135deg, #FFE5E5 0%, #E5F3FF 25%, #E5FFE5 50%, #FFF9E5 75%, #F0E5FF 100%);
+        background-size: 400% 400%;
+        animation: gradientShift 8s ease infinite;
+    }
+
+    @keyframes gradientShift {
+        0% {
+            background-position: 0% 50%;
+        }
+
+        50% {
+            background-position: 100% 50%;
+        }
+
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    .floating {
+        animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+        0%,
+        100% {
+            transform: translateY(0px);
+        }
+
+        50% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .blob {
+        border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        animation: blobMorph 6s ease-in-out infinite;
+        position: relative;
+    }
+
+    @keyframes blobMorph {
+        0% {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            transform: rotate(0deg);
+        }
+
+        25% {
+            border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%;
+            transform: rotate(90deg);
+        }
+
+        50% {
+            border-radius: 70% 30% 60% 40% / 30% 70% 60% 40%;
+            transform: rotate(180deg);
+        }
+
+        75% {
+            border-radius: 40% 70% 30% 60% / 70% 40% 50% 70%;
+            transform: rotate(270deg);
+        }
+
+        100% {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+            transform: rotate(360deg);
+        }
+    }
+
+    .card-hover {
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .card-hover:hover {
+        transform: translateY(-8px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .btn-glow {
+        box-shadow: 0 0 20px rgba(79, 209, 199, 0.5);
+        transition: all 0.3s ease;
+    }
+
+    .btn-glow:hover {
+        box-shadow: 0 0 30px rgba(79, 209, 199, 0.8);
+        transform: translateY(-2px);
+    }
+
+    .nav-glass {
+        backdrop-filter: blur(20px);
+        background: rgba(255, 255, 255, 0.8);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .section-card {
+        backdrop-filter: blur(10px);
+        background: rgba(255, 255, 255, 0.7);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    /* Custom Pastel Colors */
+    .bg-pastel-pink {
+        background-color: #FFE5E5;
+    }
+
+    .bg-pastel-blue {
+        background-color: #E5F3FF;
+    }
+
+    .bg-pastel-green {
+        background-color: #E5FFE5;
+    }
+
+    .bg-pastel-yellow {
+        background-color: #FFF9E5;
+    }
+
+    .bg-pastel-purple {
+        background-color: #F0E5FF;
+    }
+
+    .bg-pastel-coral {
+        background-color: #FFE5D9;
+    }
+
+    .bg-pastel-mint {
+        background-color: #E5FFF9;
+    }
+
+    .text-soft-teal {
+        color: #4FD1C7;
+    }
+
+    .text-warm-coral {
+        color: #FF6B6B;
+    }
+
+    .text-gentle-purple {
+        color: #9C88FF;
+    }
+
+    .text-fresh-green {
+        color: #51CF66;
+    }
+
+    .bg-soft-teal {
+        background-color: #4FD1C7;
+    }
+
+    .bg-warm-coral {
+        background-color: #FF6B6B;
+    }
+
+    .bg-gentle-purple {
+        background-color: #9C88FF;
+    }
+
+    .bg-fresh-green {
+        background-color: #51CF66;
+    }
+
+    .gradient-text {
+        background: linear-gradient(45deg, #4FD1C7, #FF6B6B, #9C88FF, #51CF66);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 300% 300%;
+        animation: gradientShift 4s ease infinite;
+    }
+
+    .gradient-bg-element {
+        background: linear-gradient(45deg, #4FD1C7, #FF6B6B);
+    }
+
+    .gradient-bg-element-2 {
+        background: linear-gradient(45deg, #FF6B6B, #9C88FF);
+    }
+
+    .gradient-bg-element-3 {
+        background: linear-gradient(45deg, #9C88FF, #51CF66);
+    }
+
+    .gradient-bg-element-4 {
+        background: linear-gradient(45deg, #51CF66, #4FD1C7);
+    }
+
+    /* NAVBAR FIXES - Improved spacing and layout */
+    .navbar-container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        max-width: 1000px;
+        min-width: 800px;
+        padding: 0 1rem;
+    }
+
+    .navbar-logo {
+        flex-shrink: 0;
+        min-width: 200px;
+    }
+
+    .navbar-menu {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex: 1;
+        gap: 2rem;
+    }
+
+    .navbar-auth {
+        flex-shrink: 0;
+        min-width: 200px;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    /* Responsive fixes */
+    @media (max-width: 1024px) {
+        .navbar-container {
+            min-width: auto;
+            max-width: 100%;
+        }
+
+        .navbar-logo {
+            min-width: auto;
+        }
+
+        .navbar-auth {
+            min-width: auto;
+        }
+
+        .navbar-menu {
+            gap: 1.5rem;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .nav-glass {
+            position: relative;
+            border-radius: 0;
+            transform: none;
+            left: auto;
+            width: 100%;
+            margin: 0;
+            top: 0;
+        }
+
+        .navbar-container {
+            flex-direction: column;
+            gap: 1rem;
+            padding: 1rem;
+        }
+
+        .navbar-menu {
+            order: 2;
+            gap: 1rem;
+        }
+
+        .navbar-auth {
+            order: 3;
+            justify-content: center;
+        }
+
+        .blob {
+            width: 250px !important;
+            height: 250px !important;
+        }
+    }
+</style>
+
+<div class="gradient-bg min-h-screen">
+    <!-- Navigation Bar -->
+    <nav class="nav-glass fixed top-4 left-1/2 transform -translate-x-1/2 rounded-full px-8 py-4 z-50 shadow-lg">
+        <div class="flex items-center justify-between min-w-[800px] max-w-[1000px]">
+            <!-- Logo -->
+            <div class="flex items-center">
+                <div class="w-10 h-10 gradient-bg-element rounded-full flex items-center justify-center mr-3">
+                    <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
+                        <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.04 4.13 2.56h1.74C14.09 5.04 15.76 4 17.5 4 20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                </div>
+                <h1 class="text-xl font-bold gradient-text">
+                    AcureScan
+                </h1>
+            </div>
+
+            <!-- Menu -->
+            <div class="hidden md:flex items-center space-x-6">
+                <a href="#home"
+                    class="text-gray-700 hover:text-soft-teal font-medium nav-link transition-colors">Home</a>
+                <a href="#features"
+                    class="text-gray-700 hover:text-soft-teal font-medium nav-link transition-colors">Features</a>
+                <a href="#why-acurescan"
+                    class="text-gray-700 hover:text-soft-teal font-medium nav-link transition-colors">Why AcureScan</a>
+                <a href="#contact"
+                    class="text-gray-700 hover:text-soft-teal font-medium nav-link transition-colors">Contact</a>
+            </div>
+
+            <!-- Auth Buttons -->
+            <div class="flex items-center space-x-3">
+                <a href="#"
+                    class="text-soft-teal font-medium hover:text-warm-coral transition-colors login-btn">Login</a>
+                <a href="#"
+                    class="gradient-bg-element text-white px-6 py-2 rounded-full hover:shadow-lg transition-all signup-btn">Sign
+                    Up</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Section 1: Hero -->
+    <section id="home" class="min-h-screen flex items-center justify-center px-6 pt-20">
+        <div class="section-card rounded-3xl p-8 md:p-12 max-w-7xl w-full">
+            <div class="flex flex-col lg:flex-row items-center justify-between gap-12">
+                <!-- Left Content -->
+                <div class="lg:w-1/2 space-y-6">
+                    <div class="inline-block bg-pastel-mint px-4 py-2 rounded-full text-soft-teal font-medium">
+                        🌟 Detect & Resolve
+                    </div>
+                    <h1 class="text-4xl md:text-6xl font-bold leading-tight">
+                        <span class="gradient-text">
+                            Accurate detection
+                        </span>
+                        <br>
+                        <span class="text-gray-800">of acne on the face becomes</span>
+                        <br>
+                        <span class="gradient-text">
+                            easy for you
+                        </span>
+                    </h1>
+                    <p class="text-gray-600 text-lg max-w-lg">
+                        Feel free to use our application and start detecting acne on your face with our advanced AI
+                        technology
+                    </p>
+                    <button
+                        class="gradient-bg-element text-white font-semibold rounded-full px-8 py-4 btn-glow text-lg start-btn">
+                        🚀 Let's Get Started
+                    </button>
+                </div>
+
+                <!-- Right Content -->
+                <div class="lg:w-1/2 flex justify-center">
+                    <div class="relative">
+                        <div class="blob bg-pastel-pink p-8 w-80 h-80 flex items-center justify-center floating">
+                            <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                <div
+                                    class="w-48 h-48 bg-pastel-yellow rounded-xl flex items-center justify-center text-6xl">
+                                    📱
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Decorative elements -->
+                        <div class="absolute -top-4 -right-4 w-8 h-8 bg-warm-coral rounded-full floating"></div>
+                        <div class="absolute -bottom-4 -left-4 w-6 h-6 bg-gentle-purple rounded-full floating"
+                            style="animation-delay: 1s;"></div>
+                        <div class="absolute top-1/2 -left-8 w-4 h-4 bg-fresh-green rounded-full floating"
+                            style="animation-delay: 2s;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Features -->
+    <section id="features" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                    <span class="gradient-text">
+                        Fitur Utama
+                    </span>
+                </h2>
+                <div class="w-24 h-1 gradient-bg-element mx-auto rounded-full"></div>
+            </div>
+
+            <!-- 3 Main Features -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                <!-- Feature 1 -->
+                <div class="section-card rounded-3xl p-8 card-hover">
+                    <div class="bg-pastel-coral rounded-2xl w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+                        <span class="text-2xl">🔍</span>
+                    </div>
+                    <h3 class="font-bold text-xl text-gray-800 mb-4 text-center">Scan Acne Type</h3>
+                    <p class="text-gray-600 text-center">Mengidentifikasi berbagai jenis penyakit jerawat dengan cepat
+                        dan akurat</p>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="section-card rounded-3xl p-8 card-hover">
+                    <div class="bg-pastel-purple rounded-2xl w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+                        <span class="text-2xl">💊</span>
+                    </div>
+                    <h3 class="font-bold text-xl text-gray-800 mb-4 text-center">Treatment Recommendations</h3>
+                    <p class="text-gray-600 text-center">Menyarankan obat yang tepat berdasarkan analisis kondisi
+                        jerawat</p>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="section-card rounded-3xl p-8 card-hover">
+                    <div class="bg-pastel-mint rounded-2xl w-16 h-16 flex items-center justify-center mb-6 mx-auto">
+                        <span class="text-2xl">✨</span>
+                    </div>
+                    <h3 class="font-bold text-xl text-gray-800 mb-4 text-center">Customized Care</h3>
+                    <p class="text-gray-600 text-center">Memberikan rencana perawatan yang sesuai untuk kulit Anda</p>
+                </div>
+            </div>
+
+            <!-- Testimonial -->
+            <div class="section-card rounded-3xl p-8 mb-12">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1">
+                        <div class="text-4xl mb-4">💬</div>
+                        <p class="text-lg text-gray-700 mb-4">
+                            Aplikasi yang <span class="font-bold gradient-text">sangat membantu</span>! Jerawat saya
+                            berkurang setelah menggunakan pengobatan yang disarankan.
+                        </p>
+                        <div class="flex items-center gap-2">
+                            <div class="flex text-yellow-400">
+                                ⭐⭐⭐⭐⭐
+                            </div>
+                            <span class="text-sm text-gray-600">5.0 • Verified User</span>
+                        </div>
+                    </div>
+                    <div
+                        class="w-40 h-40 bg-pastel-coral rounded-full flex items-center justify-center text-6xl floating">
+                        😊
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Explanation -->
+            <div class="section-card rounded-3xl p-8">
+                <div class="flex flex-col md:flex-row items-center gap-8">
+                    <div
+                        class="w-48 h-48 bg-pastel-purple rounded-3xl flex items-center justify-center text-6xl floating">
+                        💻
+                    </div>
+                    <div class="flex-1">
+                        <h3 class="text-2xl font-bold mb-4 gradient-text">
+                            Accurate detection of acne on the face becomes easy for you
+                        </h3>
+                        <p class="text-gray-600 text-lg">
+                            Aplikasi yang sangat membantu! Dengan teknologi AI terdepan, kami memastikan deteksi yang
+                            akurat dan rekomendasi perawatan yang tepat untuk setiap jenis kulit.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: Why AcureScan -->
+    <section id="why-acurescan" class="py-20 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="section-card rounded-3xl p-8 md:p-12">
+                <div class="flex flex-col lg:flex-row items-center gap-12">
+                    <!-- Image -->
+                    <div class="lg:w-1/2">
+                        <div class="relative">
+                            <div
+                                class="blob bg-pastel-green p-8 w-80 h-80 flex items-center justify-center floating mx-auto">
+                                <div class="bg-white rounded-2xl p-6 shadow-lg">
+                                    <div
+                                        class="w-48 h-48 bg-pastel-coral rounded-xl flex items-center justify-center text-6xl">
+                                        🎯
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cards -->
+                    <div class="lg:w-1/2 space-y-6">
+                        <div class="text-center lg:text-left mb-8">
+                            <h2 class="text-4xl md:text-5xl font-bold mb-4">
+                                <span class="gradient-text">
+                                    Why AcureScan?
+                                </span>
+                            </h2>
+                            <div class="w-24 h-1 gradient-bg-element mx-auto lg:mx-0 rounded-full"></div>
+                        </div>
+
+                        <!-- Card 1 -->
+                        <div class="bg-pastel-coral rounded-2xl p-6 card-hover">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-xl">
+                                    🎯
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-gray-800 mb-2">High Accuracy</h3>
+                                    <p class="text-gray-700 text-sm">AcureScan uses machine learning to detect acne
+                                        disease 99% of the time</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 2 -->
+                        <div class="bg-pastel-purple rounded-2xl p-6 card-hover">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-xl">
+                                    📊
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-gray-800 mb-2">Monitor Scan Result</h3>
+                                    <p class="text-gray-700 text-sm">AcureScan uses machine learning to detect acne
+                                        disease 99% of the time</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="bg-pastel-mint rounded-2xl p-6 card-hover">
+                            <div class="flex items-start gap-4">
+                                <div class="w-12 h-12 bg-white rounded-xl flex items-center justify-center text-xl">
+                                    ✅
+                                </div>
+                                <div>
+                                    <h3 class="text-lg font-bold text-gray-800 mb-2">Accurate Scan</h3>
+                                    <p class="text-gray-700 text-sm">AcureScan uses machine learning to detect acne
+                                        disease 99% of the time</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Contact -->
+    <section id="contact" class="py-20 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="section-card rounded-3xl p-8 md:p-12">
+                <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-8">
+                    <!-- Logo and Name -->
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 gradient-bg-element rounded-full flex items-center justify-center">
+                            <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6 4 4 6.5 4c1.74 0 3.41 1.04 4.13 2.56h1.74C14.09 5.04 15.76 4 17.5 4 20 4 22 6 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                            </svg>
+                        </div>
+                        <span class="text-2xl font-bold gradient-text">AcureScan</span>
+                    </div>
+
+                    <!-- Contact Info -->
+                    <div class="bg-pastel-purple rounded-2xl p-6 max-w-md">
+                        <h3 class="font-bold mb-4 text-gray-800">📍 Kontak</h3>
+                        <div class="space-y-2 text-sm text-gray-700">
+                            <p>Gedung Citra Towers Jl. Benyamin Sueb Kav. A6,</p>
+                            <p>Kemayoran, Jakarta Pusat 10630</p>
+                            <p>📧 <a href="mailto:AcureScan@dbs.com"
+                                    class="text-soft-teal hover:text-warm-coral transition-colors">AcureScan@dbs.com</a>
+                            </p>
+                            <p>🌐 <a href="https://www.acurescan.com" target="_blank"
+                                    class="text-soft-teal hover:text-warm-coral transition-colors">www.acurescan.com</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-full h-px bg-gradient-to-r from-transparent via-gray-300 to-transparent my-8"></div>
+
+                <!-- Footer -->
+                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                    <p class="text-sm text-gray-600">&copy; 2025 AcureScan. All rights reserved.</p>
+                    <div class="flex gap-6 text-sm">
+                        <a href="#" class="text-gray-600 hover:text-soft-teal transition-colors dashboard-btn">Dashboard</a>
+                        <a href="#" class="text-gray-600 hover:text-soft-teal transition-colors">Ketentuan & Privasi</a>
+                        <a href="#" class="text-gray-600 hover:text-soft-teal transition-colors">FAQ</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

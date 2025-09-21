@@ -1,0 +1,11 @@
+name = "acure-scan-api"
+main = "worker.js"  
+compatibility_date = "2025-08-18"
+compatibility_flags = ["nodejs_compat"]
+
+[build]
+command = "npm install"
+upload.format = "modules"
+
+[vars]
+NODE_ENV = "production"

@@ -1,0 +1,8 @@
+{
+    "name": "acure-scan-workers",
+    "version": "1.0.0",
+    "dependencies": {
+        "itty-router": "^2.6.1",
+        "firebase-admin": "^12.0.0"
+    }
+}

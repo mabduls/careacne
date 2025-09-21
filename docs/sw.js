@@ -1,0 +1,1 @@
+const CACHE_NAME="acurescan-v1",urlsToCache=["/","/index.html","/app.bundle.js"];self.addEventListener("install",(e=>self.skipWaiting())),self.addEventListener("fetch",(e=>{})),self.addEventListener("activate",(e=>{const t=[CACHE_NAME];e.waitUntil(caches.keys().then((e=>Promise.all(e.map((e=>-1===t.indexOf(e)?caches.delete(e):null)))))),e.waitUntil(clients.claim())}));
