@@ -4,153 +4,209 @@
 
 ## 📋 Overview
 
-AcureScan is a web application that utilizes machine learning to detect, classify, and provide treatment recommendations for acne. The application helps users identify their acne type, receive personalized medication recommendations, and learn proper treatment methods.
+**AcureScan** is a full-stack web application that leverages **machine learning** to detect, classify, and recommend treatments for acne. It provides users with:
+- Acne detection via image upload
+- Acne type classification (papules, pustules, nodules, cysts)
+- Personalized treatment and skincare recommendations
+- Secure user authentication and history tracking
+
+This project consists of:
+- **Frontend (PWA)**: Web interface with responsive design
+- **Backend (Node.js + Hapi)**: Core server handling APIs, Firebase integration, and ML support
+- **Cloudflare Workers**: Lightweight API edge functions for scalability
+
+---
 
 ## ✨ Features
 
-- **Acne Detection**: Upload a photo of your face to detect the presence of acne
-- **Type Classification**: AI-powered analysis to identify different types of acne
-- **Treatment Recommendations**: Get personalized medication recommendations based on your acne type
-- **Care Instructions**: Learn proper skincare methods for treating your specific acne condition
-- **User Accounts**: Create an account to save your analysis history and track your progress
-- **Responsive Design**: Seamless experience across all devices
+- **AI-Powered Acne Detection**: Detects acne from uploaded facial images
+- **Type Classification**: Identifies acne categories and severity
+- **Treatment Recommendations**: Provides personalized treatment options
+- **Skincare Guidance**: Educates users on proper treatment routines
+- **User Accounts**: Firebase-powered authentication & history storage
+- **Offline Support**: Service Worker + IndexedDB for caching and persistence
+- **Progressive Web App (PWA)**: Installable and mobile-friendly
 
-## 🚀 Technologies
+---
+
+## 🛠️ Tech Stack
 
 ### Frontend
-
 - HTML5, CSS3, JavaScript (ES6+)
-- Tailwind CSS for styling
-- Custom Web Components for modularity
+- TailwindCSS
+- Custom Web Components
+- Webpack (dev, prod builds)
+- Workbox for service workers
 
 ### Backend
-
 - Node.js
-- Webpack for module bundling
-- Service Workers for offline functionality
+- @hapi/hapi
+- Firebase Admin SDK
+- dotenv for environment variables
 
 ### Machine Learning
+- TensorFlow.js (`@tensorflow/tfjs`)
 
-- Custom-trained image recognition model for acne detection and classification
+### Edge API (Cloudflare Workers)
+- Wrangler
+- itty-router
+- Firebase Admin (for secure data access)
 
-## 📁 Project Structure
+---
+
+## 📂 Project Structure
 
 ```
-├── dist/                   # Production build output
-├── node_modules/           # Node.js dependencies
-├── src/                    # Source files
-│   ├── public/             # Public assets
-│   │   ├── images/         # Image assets
-│   │   └── favicon.png     # Application favicon
-│   ├── scripts/            # JavaScript source files
-│   │   ├── data/           # Data handlers
-│   │   │   ├── api.js      # API integration
-│   │   │   └── database.js # Local data storage
-│   │   ├── pages/          # Page components
-│   │   │   ├── auth/       # Authentication pages
-│   │   │   │   ├── login/  # Login page components
-│   │   │   │   └── register/# Registration page components
-│   │   │   ├── landing/    # Landing page components
-│   │   │   └── app.js      # Main application component
-│   │   ├── routes/         # Routing configuration
-│   │   │   ├── routes.js   # Route definitions
-│   │   │   └── url-parser.js# URL parsing utilities
-│   │   ├── utils/          # Utility functions
-│   │   ├── index.js        # Main JavaScript entry point
-│   │   └── sw.js           # Service Worker
-│   ├── styles/             # CSS styles
-│   │   └── styles.css      # Main stylesheet
-│   └── index.html          # HTML entry point
-├── .gitignore              # Git ignore file
-├── package-lock.json       # NPM package lock file
-├── package.json            # NPM package configuration
-├── postcss.config.js       # PostCSS configuration
-├── README.md               # Project documentation
-├── tailwind.config.js      # Tailwind CSS configuration
-├── webpack.common.js       # Common webpack configuration
-├── webpack.dev.js          # Development webpack configuration
-└── webpack.prod.js         # Production webpack configuration
+├── dist/                        # Production build output
+├── node_modules/                # Dependencies
+├── src/
+│   ├── public/                  # Public assets
+│   │   ├── images/              # Images
+│   │   └── favicon.png          # App favicon
+│   ├── scripts/
+│   │   ├── data/                # Data handlers (API, DB)
+│   │   ├── pages/               # Page components (auth, landing, etc.)
+│   │   ├── routes/              # Routing (hash-based)
+│   │   ├── utils/               # Utility functions
+│   │   ├── index.js             # Entry point
+│   │   └── sw.js                # Service Worker
+│   ├── server/
+│   │   └── index.js             # Backend server entry (Hapi)
+│   ├── styles/                  # Global styles
+│   │   └── styles.css
+│   └── index.html               # Main HTML entry
+├── acure-scan-workers/          # Cloudflare Workers project
+│   ├── worker.js                # Worker entry point
+│   └── package.json             # Worker dependencies
+├── .gitignore
+├── package.json                 # Root dependencies & scripts
+├── wrangler.toml                # Cloudflare Workers config
+├── webpack.common.js
+├── webpack.dev.js
+├── webpack.prod.js
+└── tailwind.config.js
 ```
 
-## 🛠️ Installation
+---
 
-1. Clone the repository:
+## ⚡ Installation & Development
 
-    ```bash
-    git clone https://github.com/yourusername/acurescan.git
-    cd acurescan
-    ```
+### 1. Clone the Repository
+```bash
+git clone https://github.com/yourusername/acurescan.git
+cd acurescan
+```
 
-2. Install dependencies:
+### 2. Install Dependencies
+```bash
+npm install
+```
 
-    ```bash
-    npm install
-    ```
+### 3. Development Server
+```bash
+npm run dev
+```
+Runs webpack dev server at `http://localhost:8080` (with hot reload).
 
-3. Start the development server:
+### 4. Production Build
+```bash
+npm run build
+```
+Builds into `/dist`.
 
-    ```bash
-    npm run start-dev
-    ```
+### 5. Serve Production Build
+```bash
+npm run serve
+```
+Serves via `http-server`.
 
-4. For production build:
+### 6. Backend Server
+```bash
+npm run start
+```
+Runs Node.js backend (`src/server/index.js`).
 
-    ```bash
-    npm run build
-    ```
+---
 
-5. To serve the production build:
-    ```bash
-    npm run serve
-    ```
+## 🚀 Deployment
+
+### Frontend + Backend
+- Build production assets:
+  ```bash
+  npm run build
+  ```
+- Deploy `/dist` folder to your hosting provider (e.g., Vercel, Netlify, or custom server).
+
+### Cloudflare Workers
+Ensure you are logged in:
+```bash
+npx wrangler whoami
+```
+
+Deploy worker:
+```bash
+cd acure-scan-workers
+npx wrangler deploy
+```
+
+This will deploy your worker and provide a `workers.dev` URL.
+
+---
+
+## 🔒 Environment Variables
+
+Create a `.env` file in the root directory for backend configuration:
+```env
+PORT=3000
+FIREBASE_API_KEY=your_firebase_api_key
+FIREBASE_AUTH_DOMAIN=your_project.firebaseapp.com
+FIREBASE_PROJECT_ID=your_project_id
+FIREBASE_STORAGE_BUCKET=your_project.appspot.com
+FIREBASE_MESSAGING_SENDER_ID=your_sender_id
+FIREBASE_APP_ID=your_app_id
+```
+
+For Cloudflare Workers, environment variables are defined in `wrangler.toml`:
+```toml
+[vars]
+NODE_ENV = "production"
+```
+
+---
 
 ## 🧠 How It Works
 
-AcureScan uses a trained machine learning model to:
+1. **User uploads a photo** → processed locally with TensorFlow.js.
+2. **Acne detected & classified** → ML model identifies acne type.
+3. **Treatment recommendations** → Provided based on acne severity & classification.
+4. **Data storage** → IndexedDB (local) + Firebase (user history).
+5. **Cloudflare Worker** → Handles edge API routing & secure Firebase admin access.
 
-1. **Detect** acne presence in user-uploaded facial images
-2. **Classify** detected acne into different types (e.g., papules, pustules, nodules, cysts)
-3. **Analyze** severity and distribution patterns
-4. **Recommend** appropriate treatments based on acne type and severity
-5. **Provide** personalized skincare routines and treatment instructions
+---
 
-## 👨‍💻 Development Workflow
+## 🤝 Contribution Guide
 
-The application is built using custom Web Components for modularity:
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/xyz`)
+3. Commit changes (`git commit -m "Add xyz feature"`)
+4. Push branch (`git push origin feature/xyz`)
+5. Open a Pull Request
 
-- Each page is a self-contained component
-- Components follow the MVP (Model-View-Presenter) pattern with separate:
-    - `-page.js` files for component definition (View)
-    - `-presenter.js` files for business logic (Presenter)
-- Routing is handled via hash-based navigation
-- Data persistence uses IndexedDB through the idb library
-
-## 📱 Progressive Web App Features
-
-AcureScan is built as a Progressive Web App (PWA) with:
-
-- Service Worker for offline capabilities
-- Responsive design for all device sizes
-- Installable on compatible devices
-- Fast loading and smooth performance
-
-## 🔒 Privacy and Data Handling
-
-- All facial analysis is performed locally on the user's device
-- Image data is not stored permanently unless explicitly saved by the user
-- User preferences and history are stored securely in the browser's local storage
+---
 
 ## 📝 License
 
-This project is licensed under the MIT License - see the LICENSE file for details.
+This project is licensed under the **MIT License** - see the [LICENSE](./LICENSE) file for details.
+
+---
 
 ## 📞 Contact
 
-For questions, feedback, or support, please contact:
-
-- Email: abdabdulziza@gmail.com
-- GitHub: [mabduls](https://github.com/mabduls)
+For questions or contributions:
+- **Email**: abdabdulziza@gmail.com
+- **GitHub**: [mabduls](https://github.com/mabduls)
 
 ---
 
 © 2025 AcureScan. All rights reserved.
+
